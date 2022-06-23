@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    Пароль: 213
+    <div class="wrapper">
+        <input type="button" value="1" class="but" style="width: 50px; height: 50px;">
+        <input type="button" value="2" class="but" style="width: 50px; height: 50px;">
+        <input type="button" value="3" class="but" style="width: 50px; height: 50px;">
+    </div>
+     
+    <div class="status"></div>
+    <script>
+        document.querySelector('.wrapper').addEventListener('click',e => 
+    e.target.classList.contains('but') ? protect(e.target.value) : ''
+);
+ 
+let sec = 5,      
+    pass = '213',   
+    check = '',
+    status = document.querySelector('.status');
+ 
+function protect(val){
+    if(check.length < pass.length){
+        check += val;
+        if(check.length == 1){
+            status.innerHTML = '';
+            setTimeout(() => {
+                check == pass ? window.location = 'entry.html' : 
+                    (check = '');
+            }, sec * 300);
+        }
+    }
+}
+    </script>
+
+</body>
+</html>
